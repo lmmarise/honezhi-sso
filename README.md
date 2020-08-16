@@ -35,10 +35,10 @@
 - 本地添加下面 hosts 才能正常访问和重定向到登录页面（必备）
 
 ```
-182.61.44.40 sso.cdk8s.com
+182.61.44.40 sso.honezhi.com
 ```
 
-- 访问地址：[TKey SSO Client Management](http://sso.cdk8s.com/tkey-sso-client-management-frontend/TKeyClient)
+- 访问地址：[TKey SSO Client Management](http://sso.honezhi.com/tkey-sso-client-management-frontend/TKeyClient)
 
 
 ## Architecture
