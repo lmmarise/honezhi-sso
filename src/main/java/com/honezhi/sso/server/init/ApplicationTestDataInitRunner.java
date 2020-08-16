@@ -20,7 +20,7 @@ import org.springframework.stereotype.Component;
 
 
 @Slf4j
-@Profile({"dev", "gatling", "test", "junit"})
+// @Profile({"dev", "gatling", "test", "junit"})		// 指定什么模式下使用
 @Component
 public class ApplicationTestDataInitRunner implements ApplicationRunner {
 
@@ -46,8 +46,13 @@ public class ApplicationTestDataInitRunner implements ApplicationRunner {
 	public void run(ApplicationArguments args) {
 		log.info("=================================预设 Redis 测试数据 Start=================================");
 
-		OauthClientToRedisBO oauthClientToRedisBO = getClient();
-		clientRedisService.set(GlobalVariable.REDIS_CLIENT_ID_KEY_PREFIX + oauthClientToRedisBO.getClientId(), JsonUtil.toJson(oauthClientToRedisBO));
+		// 增加2个客户端
+		OauthClientToRedisBO oauthClientToRedisBO1 = getClient1();
+		OauthClientToRedisBO oauthClientToRedisBO2 = getClient2();
+		clientRedisService.set(GlobalVariable.REDIS_CLIENT_ID_KEY_PREFIX + oauthClientToRedisBO1.getClientId(),
+				JsonUtil.toJson(oauthClientToRedisBO1));
+		clientRedisService.set(GlobalVariable.REDIS_CLIENT_ID_KEY_PREFIX + oauthClientToRedisBO2.getClientId(),
+				JsonUtil.toJson(oauthClientToRedisBO2));
 
 		accessTokenRedisService.set(GlobalVariable.REDIS_OAUTH_ACCESS_TOKEN_KEY_PREFIX + GlobalVariableToJunit.ACCESS_TOKEN, getAccessToken(), oauthProperties.getAccessTokenMaxTimeToLiveInSeconds());
 		refreshTokenRedisService.set(GlobalVariable.REDIS_OAUTH_REFRESH_TOKEN_KEY_PREFIX + GlobalVariableToJunit.REFRESH_TOKEN, getRefreshToken(), oauthProperties.getRefreshTokenMaxTimeToLiveInSeconds());
@@ -61,7 +66,7 @@ public class ApplicationTestDataInitRunner implements ApplicationRunner {
 	//=====================================业务处理  end=====================================
 	//=====================================私有方法 start=====================================
 
-	private OauthClientToRedisBO getClient() {
+	private OauthClientToRedisBO getClient1() {
 		OauthClientToRedisBO oauthClientToRedisBO = new OauthClientToRedisBO();
 		oauthClientToRedisBO.setId(GlobalVariableToJunit.ID_LONG);
 		oauthClientToRedisBO.setClientName("通用测试系统1");
@@ -69,6 +74,18 @@ public class ApplicationTestDataInitRunner implements ApplicationRunner {
 		oauthClientToRedisBO.setClientSecret("test_client_secret_1");
 		oauthClientToRedisBO.setClientUrl("^(http|https)://.*");
 		oauthClientToRedisBO.setClientDesc("通用测试系统1");
+		oauthClientToRedisBO.setLogoUrl("https://www.easyicon.net/api/resizeApi.php?id=1200686&size=32");
+		return oauthClientToRedisBO;
+	}
+
+	private OauthClientToRedisBO getClient2() {
+		OauthClientToRedisBO oauthClientToRedisBO = new OauthClientToRedisBO();
+		oauthClientToRedisBO.setId(111111111111111111L);
+		oauthClientToRedisBO.setClientName("通用测试系统1");
+		oauthClientToRedisBO.setClientId("test_client_id_2");
+		oauthClientToRedisBO.setClientSecret("test_client_secret_2");
+		oauthClientToRedisBO.setClientUrl("^(http|https)://.*");
+		oauthClientToRedisBO.setClientDesc("通用测试系统2");
 		oauthClientToRedisBO.setLogoUrl("https://www.easyicon.net/api/resizeApi.php?id=1200686&size=32");
 		return oauthClientToRedisBO;
 	}

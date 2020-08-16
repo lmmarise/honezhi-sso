@@ -20,11 +20,14 @@ public class RetryService {
 
 	//=====================================调用验证用户名密码的 retry 逻辑 start=====================================
 
+	// delay: 指定延迟后重试
+	// multiplier: 指定延迟的倍数, 例如: multiplier=2, 即, 第一次1s, 第二次2s, 第三次4s
 	@Retryable(value = {Exception.class}, maxAttempts = 2, backoff = @Backoff(delay = 2000L, multiplier = 1))
 	public OauthUserAttribute getOauthUserAttributeBO(String username, String password) {
 		return oauthThirdPartyApiService.getOauthUserAttributeDTO(username, password);
 	}
 
+	// 重试到达指定次数时，被注解的方法将被回调
 	@Recover
 	public OauthUserAttribute getOauthUserAttributeBORecover(Exception e) {
 		log.error("多次重试调用验证用户名密码接口失败=<{}>", e.getMessage());

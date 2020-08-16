@@ -43,5 +43,8 @@
 
 ## 接口文档
 
+### postman接口
+- json接口地址: https://www.getpostman.com/collections/f3abb9bf7ff4f8c46557
+
 ### swagger-api
 - 默认地址: http://sso.honezhi.com/sso/v2/api-docs
