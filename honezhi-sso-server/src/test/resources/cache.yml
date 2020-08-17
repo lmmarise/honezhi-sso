@@ -1,0 +1,4 @@
+sso:
+  server:
+    cache:
+      dialect-class-name: com.honezhi.sso.server.controller.strategy_pattern.OperationMultiply

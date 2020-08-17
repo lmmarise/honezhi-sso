@@ -1,0 +1,44 @@
+#=================================================================================
+
+debug: true
+logging:
+  level:
+    root: info
+    com:
+      honezhi: debug
+#=================================================================================
+
+server:
+  port: 9093
+  servlet:
+    context-path: /client
+
+#=================================================================================
+
+spring:
+  application:
+    name: hoenzhi-sso-client
+  security:
+    oauth2:
+      client:
+        registration:
+          tkey:
+            client-id: 'test_client_id_1'
+            client-secret: 'test_client_secret_1'
+            authorization-grant-type: 'authorization_code'
+            redirect-uri-template: '{baseUrl}/login/oauth2/code/client'
+        provider:
+          tkey:
+            user-info-authentication-method: 'header'
+            user-name-attribute: 'username'
+            authorization-uri: 'http://sso.honezhi.com:9091/sso/oauth/authorize'
+            token-uri: 'http://sso.honezhi.com:9091/sso/oauth/token'
+            user-info-uri: 'http://sso.honezhi.com:9091/sso/oauth/userinfo'
+
+#=================================================================================
+
+custom:
+  variable:
+    server-logout-url: 'http://sso.honezhi.com:9091/sso/oauth/logout'
+    server-logout-redirect-url: 'http://test1.honezhi.com:${server.port}${server.servlet.context-path}/logoutSuccess'
+

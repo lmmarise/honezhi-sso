@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="honezhi-sso-cache" />
+        <module name="honezhi-sso-management" />
+        <module name="honezhi-sso-client" />
+        <module name="honezhi-sso-server" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="honezhi-sso-cache" target="1.5" />
+      <module name="honezhi-sso-client" target="1.8" />
+      <module name="honezhi-sso-management" target="1.8" />
+      <module name="honezhi-sso-server" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="honezhi-sso-client" options="-parameters" />
+      <module name="honezhi-sso-management" options="-parameters" />
+      <module name="honezhi-sso-server" options="-parameters" />
+    </option>
+  </component>
+</project>
