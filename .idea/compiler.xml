@@ -7,7 +7,6 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="honezhi-sso-cache" />
         <module name="honezhi-sso-management" />
         <module name="honezhi-sso-client" />
         <module name="honezhi-sso-server" />

@@ -38,13 +38,18 @@ public class StringEhcacheCacheService<String, V> implements CacheService<String
         // java.lang.String res = cache.get("key", java.lang.String.class);
     }
 
+    public StringEhcacheCacheService() {
+        System.out.println("=========================================>StringEhcacheCacheService初始化!!!");
+    }
+
     //=====================================common start=====================================
 
 
     @Override
     public Boolean expire(String key, long timeout, TimeUnit timeUnit) {
         // 设置过期时间
-        return redisTemplate.expire(key, timeout, timeUnit);
+        // return redisTemplate.expire(key, timeout, timeUnit);
+        return true;
     }
 
 
@@ -67,13 +72,13 @@ public class StringEhcacheCacheService<String, V> implements CacheService<String
 
     @Override
     public void set(String key, V value, long timeout) {
-        redisTemplate.opsForValue().set(key, value, timeout, TimeUnit.SECONDS);
+//        redisTemplate.opsForValue().set(key, value, timeout, TimeUnit.SECONDS);
     }
 
 
     @Override
     public void set(String key, V value, long timeout, TimeUnit timeUnit) {
-        redisTemplate.opsForValue().set(key, value, timeout, timeUnit);
+//        redisTemplate.opsForValue().set(key, value, timeout, timeUnit);
     }
 
 
